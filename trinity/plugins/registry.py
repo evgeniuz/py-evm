@@ -3,14 +3,14 @@ import pkg_resources
 from trinity.plugins.builtin.attach.plugin import (
     AttachPlugin
 )
+from trinity.plugins.builtin.ethstats.plugin import (
+    EthstatsPlugin,
+)
 from trinity.plugins.builtin.fix_unclean_shutdown.plugin import (
     FixUncleanShutdownPlugin
 )
 from trinity.plugins.builtin.tx_pool.plugin import (
     TxPlugin,
-)
-from trinity.plugins.builtin.ethstats.plugin import (
-    EthstatsPlugin,
 )
 
 
@@ -29,7 +29,7 @@ def is_ipython_available() -> bool:
 
 ENABLED_PLUGINS = [
     AttachPlugin() if is_ipython_available() else AttachPlugin(use_ipython=False),
+    EthstatsPlugin(),
     FixUncleanShutdownPlugin(),
     TxPlugin(),
-    EthstatsPlugin(),
 ]
